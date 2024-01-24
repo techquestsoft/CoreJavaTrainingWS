@@ -2,6 +2,8 @@ package com.hi.interviews.problems;
 
 import java.util.Scanner;
 
+import java.util.Scanner;
+
 public class MatrixTranspose {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -23,7 +25,10 @@ public class MatrixTranspose {
         }
 
         // Transpose the matrix
+        long startTime = System.nanoTime();
         int[][] transposedMatrix = transposeMatrix(matrix, rows, columns);
+        long endTime = System.nanoTime();
+        long elapsedTime = endTime - startTime;
 
         // Display the original matrix
         System.out.println("Original Matrix:");
@@ -32,6 +37,12 @@ public class MatrixTranspose {
         // Display the transposed matrix
         System.out.println("Transposed Matrix:");
         displayMatrix(transposedMatrix, columns, rows);
+
+        System.out.println("Time taken for matrix transpose: " + elapsedTime + " nanoseconds.");
+
+        // Calculate space complexity (ignoring input matrix space)
+        long spaceComplexity = 4L * columns * rows; // Assuming each integer takes 4 bytes
+        System.out.println("Space complexity for matrix transpose: " + spaceComplexity + " bytes.");
 
         scanner.close();
     }
@@ -57,4 +68,3 @@ public class MatrixTranspose {
         }
     }
 }
-
