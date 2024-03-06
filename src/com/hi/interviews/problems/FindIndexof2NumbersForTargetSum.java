@@ -6,8 +6,8 @@ public class FindIndexof2NumbersForTargetSum {
     public static void main(String[] args) {
         int num[] = new int[]{2, 5, 3, 71, 4, 1};
         int target = 9;
-
-        int[] indices = findTwoSum2(num, target);
+        FindIndexof2NumbersForTargetSum obj = new FindIndexof2NumbersForTargetSum();
+        int[] indices = obj.findTwoSum(num, target);
         System.out.println(java.util.Arrays.toString(num));
         //Arrays.stream(num).forEach(System.out::print);
         if (indices.length == 2) {
@@ -31,17 +31,21 @@ public class FindIndexof2NumbersForTargetSum {
     }
 
     // Time complexity: O(n)
-    private static int[] findTwoSum(int[] nums, int target) {
+
+    private  int[] findTwoSum(int[] nums, int target) {
         Map<Integer, Integer> numMap = new HashMap<>();
+        int ans[] = new int[2];
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
             if (numMap.containsKey(complement)) {
-                return new int[]{numMap.get(complement), i};
-            } else {
-                numMap.put(nums[i], i);
+                ans[0] = numMap.get(complement);
+                ans[1] = i;
+                break;
             }
+            numMap.put(nums[i], i);
+
         }
-        return new int[]{};
+        return ans;
     }
 
     // This approach is called the two-pointer approach. It is a very common pattern for solving array related problems.
